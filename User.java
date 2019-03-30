@@ -1,11 +1,16 @@
-import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * User object for tracking information about a user
+ *
+ * @author Steven Gibson
+ * @version 1.0
+ */
 public class User {
 
 
   private String userName;
-  private Color teamColor;
+  private CabColor teamColor;
   private ArrayList<CabCard> cabCards;
   private ArrayList<ObjectiveCard> objectiveCards;
   private int objectiveCardCt;
@@ -16,7 +21,14 @@ public class User {
     cabCardCt = 15;
   }
 
-  public User(String userName, Color teamColor, int objectiveCardCt, int cabCardCt) {
+  /**
+   * Constructor
+   * @param userName user name
+   * @param teamColor team color
+   * @param objectiveCardCt number of remaining objective cards
+   * @param cabCardCt number of remaining cab cards
+   */
+  public User(String userName, CabColor teamColor, int objectiveCardCt, int cabCardCt) {
     this.userName = userName;
     this.teamColor = teamColor;
     this.objectiveCardCt = objectiveCardCt;
@@ -29,6 +41,7 @@ public class User {
 
   /**
    * Returns the user name
+   * @return username
    */
   public String getUserName() {
     return userName;
@@ -36,13 +49,15 @@ public class User {
 
   /**
    * Returns the team color
+   * @return teamColor
    */
-  public Color getTeamColor() {
+  public CabColor getTeamColor() {
     return teamColor;
   }
 
   /**
    * Returns the list of objective cards
+   * @return objectiveCards
    */
   public ArrayList<ObjectiveCard> getObjectiveCards() {
     return objectiveCards;
@@ -50,6 +65,7 @@ public class User {
 
   /**
    * Returns the list of cab cards
+   * @return cabCards
    */
   public ArrayList<CabCard> getCabCards() {
     return cabCards;
@@ -57,20 +73,32 @@ public class User {
 
   /**
    * Returns the objective card count
+   * @return objectiveCardCt
    */
   public int getObjectiveCardCt() {
     return objectiveCardCt;
   }
 
-
+  /**
+   * Returns the cab card count
+   * @return cabCardCt
+   */
   public int getCabCardCt() {
     return cabCardCt;
   }
 
+  /**
+   * Sets the cab card count
+   * @param cabCardCt the new cab card count
+   */
   public void setCabCardCt(int cabCardCt) {
     this.cabCardCt = cabCardCt;
   }
 
+  /**
+   * Sets the objective card count
+   * @param objectiveCardCt the new objective card count
+   */
   public void setObjectiveCardCt(int objectiveCardCt) {
     this.objectiveCardCt = objectiveCardCt;
   }
