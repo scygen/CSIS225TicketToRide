@@ -1,0 +1,3 @@
+// TEMP placeholder until card class is added by Amar
+public abstract class Card {
+}
