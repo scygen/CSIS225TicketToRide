@@ -28,9 +28,9 @@ public class ObjectiveCard extends Card
     {
         String path = "C:\\hw5\\destCards\\"; 
         Image pic = null;
-        String location = path + start + "-"+ end+  ".jpeg";
+        String location = path + start + "-"+ end+  ".jeg";
         try  {
-            Scanner sc = new Scanner(new File(location).getAbsolutePath());                      
+            Scanner sc = new Scanner(new File(location));                      
             Toolkit toolkit = Toolkit.getDefaultToolkit();
             return toolkit.getImage(location);
         } catch (Exception e) {
