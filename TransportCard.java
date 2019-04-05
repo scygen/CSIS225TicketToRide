@@ -23,9 +23,9 @@ public class TransportCard extends Card
        
         String path = "C:\\hw5\\transportCard\\"; 
          Image picture = null;
-        String location = path + getTransColor() + ".jpeg";
+        String location = path + getTransColor() + ".jpg";
         try  {
-            Scanner sc = new Scanner(new File(location).getAbsolutePath());
+            Scanner sc = new Scanner(new File(location));
             Toolkit toolkit = Toolkit.getDefaultToolkit();
             return toolkit.getImage(location);
         } catch (Exception e) {
