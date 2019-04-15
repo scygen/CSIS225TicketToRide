@@ -1,3 +1,4 @@
+
 import java.awt.Image;
 import java.awt.Image;
 import java.io.File;
@@ -83,4 +84,5 @@ public class ObjectiveCard extends Card
     {
         return points;
     }
+
 }
