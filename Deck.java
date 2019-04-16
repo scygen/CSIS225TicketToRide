@@ -13,12 +13,30 @@ public class Deck
     /**
      * Constructor for Deck object
      */
-    private Deck()
+    public Deck()
     {
         deck = new ArrayList<Card>();
         discard = new ArrayList<Card>();
     }
+    
+    /**
+     * Gets the size of the playable deck
+     * 
+     * @return an int representing the size of the playable deck
+     */
+    public int getDeckSize(){
+        return deck.size();
+    }
 
+    /**
+     * Gets the size of the discarded deck
+     * 
+     * @return an int representing the size of the discarded deck
+     */
+    public int getDiscardSize(){
+        return discard.size();
+    }
+    
     /**
      * Adds a card to the playable deck
      * 
@@ -75,5 +93,9 @@ public class Deck
         Collections.shuffle(deck);
         //Clears the deck of discarded cards
         discard.clear();
+    }
+    
+    public void bottomOfDeck(Card card){
+        deck.add(card);
     }
 }
