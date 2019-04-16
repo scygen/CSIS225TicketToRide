@@ -4,7 +4,7 @@ import java.util.Collections;
  * Creates a deck which holds an ArrayList of card objects
  *
  * @author Laura Hendley
- * @version Ticket to Ride 
+ * @version 4/11/19
  */
 public class Deck
 {
