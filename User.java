@@ -11,11 +11,12 @@ public class User {
 
   private String userName;
   private CabColor teamColor;
-  private ArrayList<CabCard> cabCards;
+  //private ArrayList<CabCard> cabCards;
   private ArrayList<ObjectiveCard> objectiveCards;
   private int objectiveCardCt;
   private int cabCardCt;
-
+  private int score;
+  
   {
     objectiveCardCt = 2;
     cabCardCt = 15;
@@ -35,7 +36,7 @@ public class User {
     this.cabCardCt = cabCardCt;
 
     // The logic for these still need to be implemented
-    cabCards = null;
+    //cabCards = null;
     objectiveCards = null;
   }
 
@@ -67,9 +68,9 @@ public class User {
    * Returns the list of cab cards
    * @return cabCards
    */
-  public ArrayList<CabCard> getCabCards() {
-    return cabCards;
-  }
+  //public ArrayList<CabCard> getCabCards() {
+  //  return cabCards;
+  //}
 
   /**
    * Returns the objective card count

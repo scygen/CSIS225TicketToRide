@@ -1,9 +1,10 @@
 
 /**
- * Enumeration class Destination - write a description of the enum class here
+ * Destination Enum
+ * Lists all possible destinations
  *
- * @author (your name here)
- * @version (version number or date here)
+ * @author (Amar Jagrup)
+ * @version (4/4/19)
  */
 public enum Destination
 {
