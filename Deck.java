@@ -42,7 +42,7 @@ public class Deck
      * 
      * @param a card object to be added to the playable deck
      */
-    public void addDeck(Card card){
+    public void addCard(Card card){
         deck.add(card);
     }
     

@@ -5,5 +5,5 @@
  * @version 1.0
  */
 public enum RouteColor{
-  ORANGE, RED, PINK, BLACK, BLUE, GREY, GREEN
+  ORANGE, RED, PINK, BLACK, BLUE, GREEN, GREY
 }

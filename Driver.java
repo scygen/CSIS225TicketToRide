@@ -17,6 +17,8 @@ public class Driver {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in)); 
         int numPlayers = 0;
 
+        Deck transportDeck = new Deck();
+        Deck destinationDeck = new Deck();
 
         // List of Players
         ArrayList<User> Players = new ArrayList<User>(); 
@@ -31,16 +33,49 @@ public class Driver {
         }
 
         print(numPlayers + " player selected!");
-        string name = "";
+        String name = "";
 
         for(int i = 0; i < 3; i++) {
             print("Player " + (i+1) + " Name:");
-            name = reader.readLine();
+            try {
+                name = reader.readLine();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
             print("Hello " + name + "!");
-            Players.add(new User(name, TeamColorPicker(i), objectiveCardCt, cabCardCt)
+            //Players.add(new User(name, TeamColorPicker(i), objectiveCardCt, cabCardCt)
             
         }
 
+    }
+
+    // Adding the initial 44 transport cards and 18 dest cards
+    public void BuildDeck() {
+
+        
+        int colorIndex = 0;
+
+        // Adding Transport cards
+        for( int i = 0; i < 44; i++ ) {
+
+            // Increment colorIndex every 6 iterations;
+            if(i % 6 == 0) {
+                colorIndex++;
+            }
+            TransportCard t = new TransportCard(TransportCardColorPicker(colorIndex));
+            //transportDeck
+        }
+    }
+
+    public static RouteColor TransportCardColorPicker(int cardNum) {
+        switch(cardNum) {
+            case 0: return RouteColor.ORANGE;
+            case 1: return RouteColor.RED;
+            case 2: return RouteColor.PINK;
+            case 3: return RouteColor.BLACK;
+            case 4: return RouteColor.BLUE;
+            default: return RouteColor.GREEN;
+        }
     }
 
     public static CabColor TeamColorPicker(int playerNum) {

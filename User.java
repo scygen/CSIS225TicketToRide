@@ -13,31 +13,32 @@ public class User {
   private CabColor teamColor;
   //private ArrayList<CabCard> cabCards;
   private ArrayList<ObjectiveCard> objectiveCards;
+  private ArrayList<TransportCard> transportCards;
   private int objectiveCardCt;
-  private int cabCardCt;
+  private int transportCardCt;
   private int score;
-  
+  private int numTaxies;
+
+  // Default values for each player
   {
     objectiveCardCt = 2;
-    cabCardCt = 15;
+    transportCardCt = 15;
+    numTaxies = 15;
   }
 
   /**
    * Constructor
    * @param userName user name
    * @param teamColor team color
-   * @param objectiveCardCt number of remaining objective cards
-   * @param cabCardCt number of remaining cab cards
    */
-  public User(String userName, CabColor teamColor, int objectiveCardCt, int cabCardCt) {
+  public User(String userName, CabColor teamColor) {
     this.userName = userName;
     this.teamColor = teamColor;
-    this.objectiveCardCt = objectiveCardCt;
-    this.cabCardCt = cabCardCt;
 
     // The logic for these still need to be implemented
     //cabCards = null;
     objectiveCards = null;
+    transportCards = null;
   }
 
   /**
@@ -80,21 +81,6 @@ public class User {
     return objectiveCardCt;
   }
 
-  /**
-   * Returns the cab card count
-   * @return cabCardCt
-   */
-  public int getCabCardCt() {
-    return cabCardCt;
-  }
-
-  /**
-   * Sets the cab card count
-   * @param cabCardCt the new cab card count
-   */
-  public void setCabCardCt(int cabCardCt) {
-    this.cabCardCt = cabCardCt;
-  }
 
   /**
    * Sets the objective card count
