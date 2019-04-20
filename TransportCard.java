@@ -2,6 +2,7 @@ import java.awt.Image;
 import java.io.File;
 import java.awt.*;
 import java.util.Scanner;
+import javax.swing.*;
 /**
  * This class creates the Transportation cards of the game. This class will get the file location of the image.
  *
@@ -12,7 +13,7 @@ public class TransportCard extends Card
 {
     protected RouteColor c; 
     private Image image1;
-   
+    protected ImageIcon img; 
     /**
      * This method gets the path of the image.
      *
@@ -20,21 +21,22 @@ public class TransportCard extends Card
      */
     public  Image getImage()
     {
-       
-        String path = "C:\\hw5\\transportCard\\"; 
-         Image picture = null;
+
+        String path = "images\\transportCard\\"; 
+        Image picture = null;
         String location = path + getTransColor() + ".jpg";
+        img = new ImageIcon(location);
         try  {
             Scanner sc = new Scanner(new File(location));
             Toolkit toolkit = Toolkit.getDefaultToolkit();
-            return toolkit.getImage(location);
+            img.setImage(img.getImage().getScaledInstance(150,200,Image.SCALE_DEFAULT));
+            return img.getImage();
         } catch (Exception e) {
             System.err.println(" Cannot find file "  +location );
         }
         return picture;
     }
 
-    
     /**
      * Constructs a Transportation card. Each card will have a color and 
      * image associated with it.
