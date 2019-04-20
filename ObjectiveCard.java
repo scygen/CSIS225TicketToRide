@@ -1,4 +1,4 @@
-
+import javax.swing.*;
 import java.awt.Image;
 import java.awt.Image;
 import java.io.File;
@@ -19,7 +19,7 @@ public class ObjectiveCard extends Card
     protected Image pic; 
     Destination start;
     Destination end; 
-
+  protected ImageIcon img; 
     /**
      * This method gets the path of the image.
      *
@@ -27,15 +27,17 @@ public class ObjectiveCard extends Card
      */
     public Image getImage()
     {
-        String path = "C:\\hw5\\destCards\\"; 
+        String path = "images\\destCards\\"; 
         Image pic = null;
         String location = path + start + "-"+ end+  ".jpg";
-        try  {
-            Scanner sc = new Scanner(new File(location));                      
-            Toolkit toolkit = Toolkit.getDefaultToolkit();
-            return toolkit.getImage(location);
+         img = new ImageIcon(location);
+        try  {           
+            Toolkit toolkit = Toolkit.getDefaultToolkit(); 
+            //resize the image
+            img.setImage(img.getImage().getScaledInstance(150,200,Image.SCALE_DEFAULT));       
+            return img.getImage();
         } catch (Exception e) {
-            System.err.println(" Cannot find file "  + location );
+            System.err.println(" Cannot find file "  +location );
         }
         return pic;
     }
