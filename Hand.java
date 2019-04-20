@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import javax.imageio.ImageIO;
 /**
- * This method displays the player's hand
+ * This method displays the player's hand.
  * 
  *
  * @author (Amar)
