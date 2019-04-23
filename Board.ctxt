@@ -1,8 +1,0 @@
-#BlueJ class context
-comment0.params=
-comment0.target=Board()
-comment0.text=\r\n\ Constructor\r\n
-comment1.params=
-comment1.target=DestinationReferences\ getDestinationReferences()
-comment1.text=\r\n\ Returns\ the\ list\ of\ destination\ references\r\n\ @return\ locRefs\r\n
-numComments=2
