@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -8,98 +9,109 @@ import java.util.ArrayList;
  */
 public class User {
 
+    public static final int STARTING_TAXI_NUMBER = 15;
 
-  private String userName;
-  private CabColor teamColor;
-  private ArrayList<CabCard> cabCards;
-  private ArrayList<ObjectiveCard> objectiveCards;
-  private int objectiveCardCt;
-  private int cabCardCt;
+    private String userName;
+    private CabColor teamColor;
+    private ArrayList<ObjectiveCard> objectiveCards;
+    private ArrayList<TransportCard> transportCards;
+    private int score;
+    private int numTaxis;
+    private ArrayList<RouteNode> claimedRoutes;
 
-  {
-    objectiveCardCt = 2;
-    cabCardCt = 15;
-  }
+    /**
+     * Constructor
+     * @param userName user name
+     * @param teamColor team color
+     */
+    public User(String userName, CabColor teamColor ) {
+        this.numTaxis = STARTING_TAXI_NUMBER;
+        this.userName = userName;
+        this.teamColor = teamColor;
+        this.claimedRoutes = new ArrayList<RouteNode>();
 
-  /**
-   * Constructor
-   * @param userName user name
-   * @param teamColor team color
-   * @param objectiveCardCt number of remaining objective cards
-   * @param cabCardCt number of remaining cab cards
-   */
-  public User(String userName, CabColor teamColor, int objectiveCardCt, int cabCardCt) {
-    this.userName = userName;
-    this.teamColor = teamColor;
-    this.objectiveCardCt = objectiveCardCt;
-    this.cabCardCt = cabCardCt;
+        // The logic for these still need to be implemented
+        objectiveCards = new ArrayList<ObjectiveCard>();
+        transportCards = new ArrayList<TransportCard>();
+    }
 
-    // The logic for these still need to be implemented
-    cabCards = null;
-    objectiveCards = null;
-  }
+    /**
+     * Returns number of taxies a user has left
+     * @return numTaxis
+     */
+    public int getNumTaxis() {
+        return this.numTaxis;
+    }
 
-  /**
-   * Returns the user name
-   * @return username
-   */
-  public String getUserName() {
-    return userName;
-  }
+    /**
+     * Sets the number of taxis a user has left
+     * @param taxis number of taxies the user has left
+     */
+    public void setNumTaxis(int taxis) {
+        this.numTaxis = taxis;
+    }
 
-  /**
-   * Returns the team color
-   * @return teamColor
-   */
-  public CabColor getTeamColor() {
-    return teamColor;
-  }
+    /**
+     * Returns the user name
+     * @return username
+     */
+    public String getUserName() {
+        return this.userName;
+    }
 
-  /**
-   * Returns the list of objective cards
-   * @return objectiveCards
-   */
-  public ArrayList<ObjectiveCard> getObjectiveCards() {
-    return objectiveCards;
-  }
+    /**
+     * Returns the team color
+     * @return teamColor
+     */
+    public CabColor getTeamColor() {
+        return this.teamColor;
+    }
 
-  /**
-   * Returns the list of cab cards
-   * @return cabCards
-   */
-  public ArrayList<CabCard> getCabCards() {
-    return cabCards;
-  }
+    /**
+     * Returns the list of objective cards
+     * @return objectiveCards
+     */
+    public ArrayList<ObjectiveCard> getObjectiveCards() {
+        return this.objectiveCards;
+    }
 
-  /**
-   * Returns the objective card count
-   * @return objectiveCardCt
-   */
-  public int getObjectiveCardCt() {
-    return objectiveCardCt;
-  }
+    /**
+     * Adds an objective card to user's hand
+     * @param o objective card
+     */
+    public void addObjectiveCard(ObjectiveCard o) {
+        this.objectiveCards.add(o);
+    }
 
-  /**
-   * Returns the cab card count
-   * @return cabCardCt
-   */
-  public int getCabCardCt() {
-    return cabCardCt;
-  }
+    /**
+     * Returns the user's transport cards
+     * @return transportCards
+     */
+    public ArrayList<TransportCard> getTransportCards() {
+        return this.transportCards;
+    }
 
-  /**
-   * Sets the cab card count
-   * @param cabCardCt the new cab card count
-   */
-  public void setCabCardCt(int cabCardCt) {
-    this.cabCardCt = cabCardCt;
-  }
+    /**
+     * Adds a transport card to user's hand
+     * @param t transport card
+     */
+    public void addTransportCard(TransportCard t) {
+        this.transportCards.add(t);
+    }
 
-  /**
-   * Sets the objective card count
-   * @param objectiveCardCt the new objective card count
-   */
-  public void setObjectiveCardCt(int objectiveCardCt) {
-    this.objectiveCardCt = objectiveCardCt;
-  }
+    /**
+     * Adds a route to the list of user's claimed routes
+     * @param route route to be claimed
+     */
+    public void addClaimedRoute(RouteNode route) {
+        this.claimedRoutes.add(route);
+    }
+
+    /**
+     * Returns the user's list of claimed routes
+     * @return claimedRoutes
+     */
+    public ArrayList<RouteNode> getClaimedRoutes() {
+        return this.claimedRoutes;
+    }
 }

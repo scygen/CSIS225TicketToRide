@@ -5,5 +5,5 @@
  * @version 1.0
  */
 public enum CabColor{
-  YELLOW, WHITE, CYAN, PURPLE
+    YELLOW, WHITE, CYAN, PURPLE, NONE
 }

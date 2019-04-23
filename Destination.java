@@ -1,29 +1,26 @@
-
 /**
- * Enumeration class Destination - write a description of the enum class here
+ * Destination Enum
+ * Lists all possible destinations
  *
- * @author (your name here)
- * @version (version number or date here)
+ * @author (Amar Jagrup)
+ * @version (4/4/19)
  */
 public enum Destination
 {
     BROOKLYN,
-    CHELSEA,
-    EMPIRE,
-    TIMES,
-    CENTRAL,
-    CHINA,
-    GRAMERCY,
-    EAST,
-    LINCOLN,
-    WALLSTREET,
-    UN,
-    MIDTOWN,
+    WALL_STREET,
     SOHO,
-    LOWEREASTSIDE,
-    GREENWICH,
-    
-    
-    
-    
+    CHINATOWN,
+    LOWER_EAST_SIDE,
+    CHELSEA,
+    GREENWICH_VILLAGE,
+    EAST_VILLAGE,
+    GRAMERCY_PARK,
+    EMPIRE_STATE_BUILDING,
+    MIDTOWN_WEST,
+    TIMES_SQUARE,
+    UNITED_NATIONS,
+    LINCOLN_CENTER,
+    CENTRAL_PARK,
+
 }

@@ -1,4 +1,3 @@
-import javax.swing.*;
 import java.awt.Image;
 import java.awt.Image;
 import java.io.File;
@@ -13,13 +12,13 @@ import  java.nio.file.Paths;
  * @author (Amar Jagrup)
  * @version (4/4/19)
  */
-public class ObjectiveCard extends Card 
+public class ObjectiveCard extends Card
 {
     protected int points;
-    protected Image pic; 
+    protected Image pic;
     Destination start;
-    Destination end; 
-  protected ImageIcon img; 
+    Destination end;
+
     /**
      * This method gets the path of the image.
      *
@@ -27,23 +26,21 @@ public class ObjectiveCard extends Card
      */
     public Image getImage()
     {
-        String path = "images\\destCards\\"; 
+        String path = "C:\\hw5\\destCards\\";
         Image pic = null;
         String location = path + start + "-"+ end+  ".jpg";
-         img = new ImageIcon(location);
-        try  {           
-            Toolkit toolkit = Toolkit.getDefaultToolkit(); 
-            //resize the image
-            img.setImage(img.getImage().getScaledInstance(150,200,Image.SCALE_DEFAULT));       
-            return img.getImage();
+        try  {
+            Scanner sc = new Scanner(new File(location));
+            Toolkit toolkit = Toolkit.getDefaultToolkit();
+            return toolkit.getImage(location);
         } catch (Exception e) {
-            System.err.println(" Cannot find file "  +location );
+            System.err.println(" Cannot find file "  + location );
         }
-        return pic;
+        return this.pic;
     }
 
     /**
-     * Construtures a objectivecard object
+     * Constructs a objectivecard object
      *
      * @param start the starting location on the card
      * @param dest the destination location on the card
@@ -51,9 +48,9 @@ public class ObjectiveCard extends Card
      */
     public ObjectiveCard(Destination a, Destination dest, int pts)
     {
-        start =a ;
-        end = dest;
-        points = pts;
+        this.start = a;
+        this.end = dest;
+        this.points = pts;
 
     }
 
@@ -78,13 +75,23 @@ public class ObjectiveCard extends Card
     }
 
     /**
+     * this method gets the starting point
+     *
+     * @return the starting location
+     */
+    public Destination getEnd()
+    {
+        return this.end;
+    }
+
+    /**
      * this method gets the points value
      *
      * @return the points
      */
     public int getPoints()
     {
-        return points;
+        return this.points;
     }
 
 }
