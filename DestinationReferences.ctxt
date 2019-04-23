@@ -1,0 +1,17 @@
+#BlueJ class context
+comment0.params=
+comment0.target=DestinationReferences()
+comment0.text=\r\n\ Constructor\r\n
+comment1.params=loc
+comment1.target=void\ addLocation(DestinationNode)
+comment1.text=\r\n\ Adds\ a\ location\ (destination)\ to\ the\ reference\ list\r\n\ @param\ loc\ location\ to\ be\ added\ to\ list\r\n
+comment2.params=dest
+comment2.target=DestinationNode\ findLocation(Destination)
+comment2.text=\r\n\ Finds\ a\ location\ in\ the\ reference\ list\ based\ on\ destination\ value\r\n\ @return\ destination\r\n
+comment3.params=
+comment3.target=java.util.ArrayList\ getLocations()
+comment3.text=\r\n\ Returns\ the\ list\ of\ destination\ references\r\n\ @return\ nodes\r\n
+comment4.params=ind
+comment4.target=DestinationNode\ getLocation(int)
+comment4.text=\r\n\ Returns\ a\ single\ location\ based\ on\ index\ into\ reference\ list\r\n\ @return\ destination\r\n
+numComments=5

@@ -1,0 +1,23 @@
+#BlueJ class context
+comment0.params=routeColor\ numTaxis\ link1\ link2
+comment0.target=RouteNode(RouteColor,\ int,\ DestinationNode,\ DestinationNode)
+comment0.text=\r\n\ Constructor\r\n\ @param\ routeColor\ color\ of\ the\ route\r\n\ @param\ numTaxis\ number\ of\ taxies\ the\ route\ costs\r\n\ @param\ link1\ first\ destination\ that\ route\ is\ connected\ to\r\n\ @param\ link2\ second\ destination\ that\ route\ is\ connected\ to\r\n
+comment1.params=
+comment1.target=DestinationNode\ getLink1()
+comment1.text=\r\n\ Returns\ the\ first\ destination\ that\ route\ is\ connected\ to\r\n\ @return\ link1\r\n
+comment2.params=
+comment2.target=DestinationNode\ getLink2()
+comment2.text=\r\n\ Returns\ the\ second\ destination\ that\ route\ is\ connected\ to\r\n\ @return\ link2\r\n
+comment3.params=
+comment3.target=CabColor\ getOccupyingPlayer()
+comment3.text=\r\n\ Returns\ team\ color\ of\ the\ player\ that\ is\ occupying\ this\ route\r\n\ @return\ occupyingPlayer\r\n
+comment4.params=
+comment4.target=RouteColor\ getRouteColor()
+comment4.text=\r\n\ Returns\ route\ color\ of\ this\ route\r\n\ @return\ routeColor\r\n
+comment5.params=
+comment5.target=int\ getNumTaxis()
+comment5.text=\r\n\ Returns\ cost\ in\ taxis\ of\ this\ route\r\n\ @return\ numTaxis\r\n
+comment6.params=color
+comment6.target=void\ setOccupyingPlayer(CabColor)
+comment6.text=\r\n\ Sets\ the\ team\ color\ of\ the\ player\ that\ is\ occupying\ this\ route\r\n\ @param\ color\ color\ of\ the\ player\ occupying\ this\ route\r\n
+numComments=7

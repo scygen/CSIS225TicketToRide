@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.params=
+comment0.target=java.awt.Image\ getImage()
+comment0.text=\r\n\ This\ method\ gets\ the\ path\ of\ the\ image.\r\n\r\n\ @return\ the\ Image\r\n
+comment1.params=colors
+comment1.target=TransportCard(RouteColor)
+comment1.text=\r\n\ Constructs\ a\ Transportation\ card.\ Each\ card\ will\ have\ a\ color\ and\r\n\ image\ associated\ with\ it.\r\n\r\n\ @param\ colors\ the\ route\ color\r\n
+comment2.params=
+comment2.target=RouteColor\ getTransColor()
+comment2.text=\r\n\ gets\ the\ color\ of\ the\ card\r\n\r\n\ @return\ the\ route\ color\r\n
+numComments=3

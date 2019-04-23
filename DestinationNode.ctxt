@@ -1,0 +1,19 @@
+#BlueJ class context
+comment0.params=isTouristAttraction\ numRoutes\ destination
+comment0.target=DestinationNode(boolean,\ int,\ Destination)
+comment0.text=\r\n\ Node\ Default\ Constructor\r\n\ @param\ isTouristAttraction\ boolean\ flag\ to\ mark\ destination\ as\ tourist\ attraction\ (for\ scoring)\r\n\ @param\ numRoutes\ number\ of\ routes\ that\ this\ node\ is\ connected\ to\r\n\ @param\ destination\ destination\ value\ of\ node\r\n
+comment1.params=n\ numTaxis\ rtColor
+comment1.target=void\ linkLocation(DestinationNode,\ int,\ RouteColor)
+comment1.text=\r\n\ Used\ to\ link\ two\ location\ nodes\ together\ with\ a\ route\ node\ between\r\n\ @param\ n\ node\ to\ be\ linked\ to\r\n\ @param\ numTaxis\ number\ of\ taxies\ the\ route\ between\ costs\ to\ occupy\r\n\ @param\ rtColor\ color\ of\ the\ route\ between\r\n
+comment2.params=
+comment2.target=Destination\ getDestination()
+comment3.params=
+comment3.target=java.lang.Boolean\ getIsTouristAttraction()
+comment3.text=\r\n\ Returns\ whether\ this\ destination\ is\ a\ tourist\ attraction\r\n\ @return\ isTouristAttraction\r\n
+comment4.params=
+comment4.target=int\ getRouteIndex()
+comment4.text=\r\n\ Returns\ the\ number\ of\ routes\ this\ node\ is\ connected\ to\r\n\ @return\ routeIndex\r\n
+comment5.params=
+comment5.target=RouteNode[]\ getRoutes()
+comment5.text=\r\n\ Returns\ the\ list\ of\ routes\ this\ node\ is\ connected\ to\r\n\ @return\ routeIndex\r\n
+numComments=6

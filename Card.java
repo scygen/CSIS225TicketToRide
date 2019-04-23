@@ -1,12 +1,11 @@
-
 import java.awt.Image;
 /**
- * Write a description of class ttr here.
+ * Class governing what it is to be a card
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Team 4
+ * @version 1.0
  */
 public abstract class  Card
 {
-   public abstract Image getImage();
+    public abstract Image getImage();
 }

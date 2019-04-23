@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.params=
+comment0.target=java.awt.Image\ getImage()
+comment0.text=\r\n\ This\ method\ gets\ the\ path\ of\ the\ image.\r\n\r\n\ @return\ the\ Image\r\n
+comment1.params=a\ dest\ pts
+comment1.target=ObjectiveCard(Destination,\ Destination,\ int)
+comment1.text=\r\n\ Constructs\ a\ objectivecard\ object\r\n\r\n\ @param\ start\ the\ starting\ location\ on\ the\ card\r\n\ @param\ dest\ the\ destination\ location\ on\ the\ card\r\n\ @param\ pts\ the\ point\ value\ of\ the\ card\r\n
+comment2.params=
+comment2.target=Destination\ getObj()
+comment2.text=\r\n\ this\ method\ gets\ the\ destination\r\n\r\n\ @return\ The\ destination\r\n
+comment3.params=
+comment3.target=Destination\ getStart()
+comment3.text=\r\n\ this\ method\ gets\ the\ starting\ point\r\n\r\n\ @return\ the\ starting\ location\r\n
+comment4.params=
+comment4.target=Destination\ getEnd()
+comment4.text=\r\n\ this\ method\ gets\ the\ starting\ point\r\n\r\n\ @return\ the\ starting\ location\r\n
+comment5.params=
+comment5.target=int\ getPoints()
+comment5.text=\r\n\ this\ method\ gets\ the\ points\ value\r\n\r\n\ @return\ the\ points\r\n
+numComments=6

@@ -18,10 +18,10 @@ public class Deck
         deck = new ArrayList<Card>();
         discard = new ArrayList<Card>();
     }
-    
+
     /**
      * Gets the size of the playable deck
-     * 
+     *
      * @return an int representing the size of the playable deck
      */
     public int getDeckSize(){
@@ -30,25 +30,25 @@ public class Deck
 
     /**
      * Gets the size of the discarded deck
-     * 
+     *
      * @return an int representing the size of the discarded deck
      */
     public int getDiscardSize(){
         return discard.size();
     }
-    
+
     /**
      * Adds a card to the playable deck
-     * 
+     *
      * @param a card object to be added to the playable deck
      */
-    public void addDeck(Card card){
+    public void addCard(Card card){
         deck.add(card);
     }
-    
+
     /**
      * Adds a card to the deck of discarded cards
-     * 
+     *
      * @param a card object to be added to the discard deck
      */
     public void addDiscard(Card card){
@@ -57,7 +57,7 @@ public class Deck
 
     /**
      *  Draw method which finds and returns the first card from the deck
-     * 
+     *
      * @return  a card object that is the card on the top of the deck
      */
     public Card draw(){
@@ -71,7 +71,7 @@ public class Deck
         else if(discard.size()!=0){
             //Case if there are no more cards in the playable deck but
             //there are cards in the discard deck.
-            shuffle();
+            resetDeck();
             topCard = deck.get(0);
             deck.remove(0);
         }
@@ -84,17 +84,28 @@ public class Deck
      * This method takes the discarded cards and replaces them into the
      * playable deck.
      */
-    public void shuffle(){
+    public void resetDeck(){
         //Adds cards from discard back into playable deck
         for(int i = 0; i < discard.size(); i++){
             deck.add(discard.get(i));
         }
         //Shuffles the cards in the deck
-        Collections.shuffle(deck);
+        shuffleDeck();
         //Clears the deck of discarded cards
         discard.clear();
     }
-    
+
+    /**
+     * Shuffles the deck
+     */
+    public void shuffleDeck() {
+        Collections.shuffle(deck);
+    }
+
+    /**
+     * Adds card to bottom of deck
+     * @param card card object to be added to bottom of deck
+     */
     public void bottomOfDeck(Card card){
         deck.add(card);
     }
