@@ -1,3 +1,5 @@
+package CSIS225TicketToRide;
+
 import sun.rmi.transport.Transport;
 
 import java.lang.reflect.Array;
@@ -6,6 +8,9 @@ import java.util.ArrayList;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 /**
  * This class is currently simulating the Ticket to Ride gameplay via a console application
@@ -19,9 +24,37 @@ public class Driver {
     public static final int MIN_PLAYERS = 2;
     public static final int NUM_TRANSPORT_CARDS = 44;
     public static final int TRANSP_CARDS_PER_COLOR = 6;
-
-    public static void main( String args[] ) {
-
+    protected static String turnChoice = "";
+    protected static BoardPanel panel;
+    
+     private static void createAndShowGUI() {
+        //Create and set up the window.
+        JFrame frame = new JFrame("TicketToRide");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        //Add the ubiquitous "Hello World" label.
+        //MenuPanel  m = new MenuPanel();
+        panel = new BoardPanel();
+        //frame.getContentPane().add(panel);
+        JButton button = new JButton("Start");
+        button.setSize(button.getPreferredSize());
+        button.setLocation(500, 500);
+        frame.add(panel.transport);
+        frame.add(panel.objective);
+        //m.add(button);
+        frame.getContentPane().add(panel);
+        //Display the window.
+        frame.pack();
+        frame.setVisible(true);
+    }
+    
+    public static void main( String args[] ) throws IOException{
+        javax.swing.SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                createAndShowGUI();
+            }
+        });
+        
         //Enter data using BufferReader
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         int numPlayers = 0;
@@ -36,7 +69,7 @@ public class Driver {
         ArrayList<User> players = new ArrayList<User>();
 
         introMessage();
-
+        
         // Building both decks of cards
         buildTransportDeck(transportDeck);
         buildObjectiveDeck(objectiveDeck);
@@ -93,8 +126,9 @@ public class Driver {
             print("[7] View Claimed Routes");
             print("[Q] Quit Game!");
             try {
-                option = reader.readLine();
-            } catch (IOException e) {
+                option = panel.choice;
+                panel.choice = "";
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
@@ -159,7 +193,6 @@ public class Driver {
     }
 
     public static boolean claimRoute(Board board, BufferedReader reader, User player) {
-
         DestinationReferences locationReferences = board.getDestinationReferences();
         int option = 0;
         int i;
@@ -167,16 +200,20 @@ public class Driver {
             print("----------------------");
             print("View a Location...");
             i = 1;
-
+            String[] options = new String[locationReferences.getLocations().size()];
             // Display potential routes to claim
             for( DestinationNode location : locationReferences.getLocations()) {
                 print("[" + i + "] " + location.getDestination().toString().toLowerCase());
+                options[i-1] = "[" + i + "] " + location.getDestination().toString();
                 i++;
             }
-
+            //displays the options for start city
+            String input = (String) JOptionPane.showInputDialog(null,"Choose your start city:"
+            ,"Claim",JOptionPane.QUESTION_MESSAGE, null,options,options[0]);
+            
             try {
-                option = Integer.parseInt(reader.readLine());
-            } catch (IOException e) {
+                option = Integer.parseInt(input.substring(1,2));
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
@@ -187,7 +224,6 @@ public class Driver {
     }
 
     public static boolean printRoutes(DestinationNode loc, BufferedReader reader, User player) {
-
         int option = 0;
         int i;
         ArrayList<RouteNode> tempRoutes = new ArrayList<RouteNode>();
@@ -195,22 +231,35 @@ public class Driver {
             i = 1;
             print("----------------------");
             print("Select a route from " + loc.getDestination().toString().toLowerCase() + ":");
-
+            String[] options = new String[loc.getRoutes().length];
+            System.out.println(options.length);
             // Display the full information between each route
             for( RouteNode route : loc.getRoutes()) {
                 // Don't display own route back
                 if(!route.getLink1().getDestination().toString().toLowerCase().equals(loc.getDestination().toString().toLowerCase())) {
-                    print("[" + i++ + "] (" + loc.getDestination().toString().toLowerCase() + ") <-->" + getRouteInformation(route)  + "<--> (" + route.getLink1().getDestination().toString().toLowerCase() + ")");
+                    print("[" + i++ + "] (" + loc.getDestination().toString().toLowerCase() + ") <-->" + getRouteInformation(route)  + 
+                    "<--> (" + route.getLink1().getDestination().toString().toLowerCase() + ")");
+                    options[i-2] += "[" + i + "] (" + loc.getDestination().toString().toLowerCase() + ") <-->" + getRouteInformation(route) 
+                    + "<--> (" + route.getLink1().getDestination().toString().toLowerCase() + ")";
                     tempRoutes.add(route);
                 }
                 if(!route.getLink2().getDestination().toString().toLowerCase().equals(loc.getDestination().toString().toLowerCase())) {
-                    print("[" + i++ + "] (" + loc.getDestination().toString().toLowerCase() + ") <-->" + getRouteInformation(route)  + "<--> (" + route.getLink2().getDestination().toString().toLowerCase() + ")");
+                    print("[" + i++ + "] (" + loc.getDestination().toString().toLowerCase() + ") <-->" + getRouteInformation(route)  +
+                    "<--> (" + route.getLink2().getDestination().toString().toLowerCase() + ")");
+                    options[i-2] += "[" + i + "] (" + loc.getDestination().toString().toLowerCase() + ") <-->" + getRouteInformation(route)
+                    + "<--> (" + route.getLink2().getDestination().toString().toLowerCase() + ")";
                     tempRoutes.add(route);
                 }
             }
+            for(int r = 0; r < options.length; r++){
+                options[r] = options[r].substring(4);
+            }
+            String input = (String) JOptionPane.showInputDialog(null,
+            "Select a route from " + loc.getDestination().toString().toLowerCase() + ":"
+            ,"Claim",JOptionPane.QUESTION_MESSAGE, null,options,options[0]);
             try {
-                option = Integer.parseInt(reader.readLine());
-            } catch (IOException e) {
+                option = Integer.parseInt(input.substring(1,2));
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         } while(option > i-1 || option < 1);
@@ -248,20 +297,21 @@ public class Driver {
         print(player.getUserName() + " drew two Objective cards...");
         ObjectiveCard card1 = (ObjectiveCard)objectiveDeck.draw();
         ObjectiveCard card2 = (ObjectiveCard)objectiveDeck.draw();
-
         String option = "";
 
         // Give player option to discard 1 objective card
         do {
             print("----------------------");
             print("Discard one?");
+            String input = JOptionPane.showInputDialog(player.getUserName() + " drew two Objective cards... \n [1] " + card1.getStart().toString().toLowerCase() + " to " + card1.getEnd().toString().toLowerCase() + "\n" + 
+            "[2] " + card2.getStart().toString().toLowerCase() + " to " + card2.getEnd().toString().toLowerCase() + "\n[N] No");
             print("[1] " + card1.getStart().toString().toLowerCase() + " to " + card1.getEnd().toString().toLowerCase());
             print("[2] " + card2.getStart().toString().toLowerCase() + " to " + card2.getEnd().toString().toLowerCase());
             print("[N] No");
 
             try {
-                option = reader.readLine();
-            } catch (IOException e) {
+                option = input;
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
@@ -291,15 +341,17 @@ public class Driver {
             print(player.getUserName() + " is drawing " + numCardsLeft + " Transport Cards");
             print("[1] Draw a card from pool");
             print("[2] Draw a card from top of deck");
-
+            
+            String input = JOptionPane.showInputDialog(player.getUserName() + " is drawing " + numCardsLeft + " Transport Cards\n"
+            + "[1] Draw a card from pool \n [2] Draw a card from top of deck");
             // Don't display the option for the player to go back if they already pulled a card (that would be cheating!)
             if(numCardsLeft == 2) {
                 print("[B] Go Back!");
             }
 
             try {
-                option = reader.readLine();
-            } catch (IOException e) {
+                option = input;
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
@@ -327,20 +379,27 @@ public class Driver {
     public static boolean drawFromPool(BufferedReader reader,ArrayList<TransportCard> transportCardPool, User player, Deck transportDeck, int numCardsLeft) {
         int option = 0;
         int i;
+        String[] options = new String[transportCardPool.size()];
         do {
             print("----------------------");
             print("Drawing from Pool...\n");
             print("Which card do you want?");
             i = 1;
-
             // Show all transport cards in pool
             for( TransportCard card : transportCardPool ) {
                 print("[" + i + "] " +card.getTransColor().toString().toLowerCase());
+                options[i-1] += "[" + i + "] " + card.getTransColor().toString();
                 i++;
             }
+            //removes the null in front of the string (I don't know why it appears in the string)
+            for(int r = 0; r < options.length; r++){
+                options[r] = options[r].substring(4);
+            }
+            String input = (String) JOptionPane.showInputDialog(null,"Drawing from Pool...\n Which card do you want?"
+            ,"Draw",JOptionPane.QUESTION_MESSAGE, null,options,options[0]);
             try {
-                option = Integer.parseInt(reader.readLine());
-            } catch (IOException e) {
+                option = Integer.parseInt(input.substring(1,2));
+            } catch (Exception e) {
                 e.printStackTrace();
             }
 
@@ -374,6 +433,7 @@ public class Driver {
         TransportCard card = (TransportCard)transportDeck.draw();
         player.addTransportCard(card);
         print("Player " + player.getUserName() + " obtained a " + card.getTransColor().toString().toLowerCase() + " Transport Card!");
+        JOptionPane.showMessageDialog(null, "Player " + player.getUserName() + " obtained a " + card.getTransColor().toString().toLowerCase() + " Transport Card!");
     }
 
     public static boolean gameEndTrigger(ArrayList<User> players) {
@@ -422,10 +482,11 @@ public class Driver {
     public static void addPlayers(int numPlayers, ArrayList<User> players, BufferedReader reader) {
         // Choose the amount of players
         while(numPlayers > MAX_PLAYERS || numPlayers < MIN_PLAYERS) {
+            String input = JOptionPane.showInputDialog("Please enter the number of Player");
             print("How many players?");
             try {
-                numPlayers = Integer.parseInt(reader.readLine());
-            } catch (IOException e) {
+                numPlayers = Integer.parseInt(input);
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             print("----------------------");
@@ -437,8 +498,8 @@ public class Driver {
         for(int i = 0; i < numPlayers; i++) {
             print("Player " + (i+1) + " Name:");
             try {
-                name = reader.readLine();
-            } catch (IOException e) {
+                name = JOptionPane.showInputDialog("Please enter Player " + (i+1) + " Name:" );
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             print("Hello " + name + "!");
